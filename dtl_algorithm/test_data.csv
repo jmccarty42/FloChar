@@ -1,0 +1,13 @@
+Do you have an alternate?,Is it a bar?,Is it Friday?,Are you hungry?,Are there patrons?,Is it expensive?,Is it raining?,Do you have a reservation?,What is the restaurant type?,Is there a wait?,goal <-Question 
+Yes,No,No,Yes,Some,Very,No,Yes,French,0-10 minutes,y
+Yes,No,No,Yes,Full,Cheap,No,No,Thai,30-60 minutes,n
+No,Yes,No,No,Some,Cheap,No,No,Burgers,0-10 minutes,y
+Yes,No,Yes,Yes,Full,Cheap,Yes,No,Thai,10-30 minutes,y
+Yes,No,Yes,No,Full,Very,No,Yes,French,60+ minutes,n
+No,Yes,No,Yes,Some,Moderate,Yes,Yes,Italian,0-10 minutes,y
+No,Yes,No,No,No,Cheap,Yes,No,Burgers,0-10 minutes,n
+No,No,No,Yes,Some,Moderate,Yes,Yes,Thai,0-10 minutes,y
+No,Yes,Yes,No,Full,Cheap,Yes,No,Burgers,60+ minutes,n
+Yes,Yes,Yes,Yes,Full,Very,No,Yes,Italian,10-30 minutes,n
+No,No,No,No,No,Cheap,No,No,Thai,0-10 minutes,n
+Yes,Yes,Yes,Yes,Full,Cheap,No,No,Burgers,30-60 minutes,y
