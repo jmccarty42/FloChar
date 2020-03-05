@@ -1,0 +1,34 @@
+﻿@page
+@model FloChar.AskQuestionModel
+@{
+    ViewData["Title"] = "AskQuestion";
+}
+
+<script src="~/js/questionHandler.js"></script>
+
+<h2>Ask a Generic Question</h2>
+<label>Topic Question</label>
+<input id="rootQuestionInput" type="text" name="question" class="form-control mb-3 " placeholder="Type your Question Here" maxlength="255" />
+<br />
+<label>List your Sub-Questions here</label>
+<div id="subQuestions" class="row">
+    <div class="ml-3">
+        <div class="col-md-11"><input class="subQuestionInput form-control" type="text" name="question" placeholder="Type your Question Here" maxlength="255" /></div>
+        <button class="btn btn-danger">&#10005;</button>
+    </div>
+    <br />
+    <div class="ml-3">
+        <div class="col-md-11"><input class="subQuestionInput form-control" type="text" name="question" placeholder="Type your Question Here" maxlength="255" /></div>
+        <button class="btn btn-danger">&#10005;</button>
+    </div>
+    <br />
+    <div class="ml-3">
+        <div class="col-md-11"><input class="subQuestionInput form-control" type="text" name="question" placeholder="Type your Question Here" maxlength="255" /></div>
+        <button class="btn btn-danger">&#10005;</button>
+    </div>
+    <br />
+</div>
+<br />
+<button class="btn btn-success" type="button" onclick="addSubQuestion()">Add Another Sub-Question</button>
+<button class="btn btn-primary" type="submit" onclick="postQuestion()">Submit</button>
+<br />
