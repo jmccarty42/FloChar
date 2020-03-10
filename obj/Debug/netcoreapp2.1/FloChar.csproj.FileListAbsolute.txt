@@ -1,0 +1,117 @@
+C:/Users/jacob/source/repos/FloChar/FloChar/bin/Debug/netcoreapp2.1/appsettings.Development.json
+C:/Users/jacob/source/repos/FloChar/FloChar/bin/Debug/netcoreapp2.1/appsettings.json
+C:/Users/jacob/source/repos/FloChar/FloChar/bin/Debug/netcoreapp2.1/Properties/launchSettings.json
+C:/Users/jacob/source/repos/FloChar/FloChar/bin/Debug/netcoreapp2.1/FloChar.deps.json
+C:/Users/jacob/source/repos/FloChar/FloChar/bin/Debug/netcoreapp2.1/FloChar.runtimeconfig.json
+C:/Users/jacob/source/repos/FloChar/FloChar/bin/Debug/netcoreapp2.1/FloChar.runtimeconfig.dev.json
+C:/Users/jacob/source/repos/FloChar/FloChar/bin/Debug/netcoreapp2.1/FloChar.dll
+C:/Users/jacob/source/repos/FloChar/FloChar/obj/Debug/netcoreapp2.1/FloChar.csprojAssemblyReference.cache
+C:/Users/jacob/source/repos/FloChar/FloChar/obj/Debug/netcoreapp2.1/FloChar.RazorAssemblyInfo.cache
+C:/Users/jacob/source/repos/FloChar/FloChar/obj/Debug/netcoreapp2.1/FloChar.RazorAssemblyInfo.cs
+C:/Users/jacob/source/repos/FloChar/FloChar/obj/Debug/netcoreapp2.1/FloChar.AssemblyInfoInputs.cache
+C:/Users/jacob/source/repos/FloChar/FloChar/obj/Debug/netcoreapp2.1/FloChar.AssemblyInfo.cs
+C:/Users/jacob/source/repos/FloChar/FloChar/obj/Debug/netcoreapp2.1/FloChar.TagHelpers.input.cache
+C:/Users/jacob/source/repos/FloChar/FloChar/obj/Debug/netcoreapp2.1/FloChar.TagHelpers.output.cache
+C:/Users/jacob/source/repos/FloChar/FloChar/obj/Debug/netcoreapp2.1/FloChar.RazorCoreGenerate.cache
+C:/Users/jacob/source/repos/FloChar/FloChar/obj/Debug/netcoreapp2.1/Razor/Areas/Identity/Pages/_ViewStart.cshtml.g.cs
+C:/Users/jacob/source/repos/FloChar/FloChar/obj/Debug/netcoreapp2.1/Razor/Pages/About.cshtml.g.cs
+C:/Users/jacob/source/repos/FloChar/FloChar/obj/Debug/netcoreapp2.1/Razor/Pages/Contact.cshtml.g.cs
+C:/Users/jacob/source/repos/FloChar/FloChar/obj/Debug/netcoreapp2.1/Razor/Pages/Error.cshtml.g.cs
+C:/Users/jacob/source/repos/FloChar/FloChar/obj/Debug/netcoreapp2.1/Razor/Pages/Index.cshtml.g.cs
+C:/Users/jacob/source/repos/FloChar/FloChar/obj/Debug/netcoreapp2.1/Razor/Pages/Privacy.cshtml.g.cs
+C:/Users/jacob/source/repos/FloChar/FloChar/obj/Debug/netcoreapp2.1/Razor/Pages/Shared/_CookieConsentPartial.cshtml.g.cs
+C:/Users/jacob/source/repos/FloChar/FloChar/obj/Debug/netcoreapp2.1/Razor/Pages/Shared/_Layout.cshtml.g.cs
+C:/Users/jacob/source/repos/FloChar/FloChar/obj/Debug/netcoreapp2.1/Razor/Pages/Shared/_LoginPartial.cshtml.g.cs
+C:/Users/jacob/source/repos/FloChar/FloChar/obj/Debug/netcoreapp2.1/Razor/Pages/Shared/_ValidationScriptsPartial.cshtml.g.cs
+C:/Users/jacob/source/repos/FloChar/FloChar/obj/Debug/netcoreapp2.1/Razor/Pages/_ViewImports.cshtml.g.cs
+C:/Users/jacob/source/repos/FloChar/FloChar/obj/Debug/netcoreapp2.1/Razor/Pages/_ViewStart.cshtml.g.cs
+C:/Users/jacob/source/repos/FloChar/FloChar/obj/Debug/netcoreapp2.1/FloChar.RazorTargetAssemblyInfo.cache
+C:/Users/jacob/source/repos/FloChar/FloChar/obj/Debug/netcoreapp2.1/FloChar.RazorTargetAssemblyInfo.cs
+C:/Users/jacob/source/repos/FloChar/FloChar/bin/Debug/netcoreapp2.1/FloChar.pdb
+C:/Users/jacob/source/repos/FloChar/FloChar/bin/Debug/netcoreapp2.1/FloChar.Views.dll
+C:/Users/jacob/source/repos/FloChar/FloChar/bin/Debug/netcoreapp2.1/FloChar.Views.pdb
+C:/Users/jacob/source/repos/FloChar/FloChar/obj/Debug/netcoreapp2.1/FloChar.Views.pdb
+C:/Users/jacob/source/repos/FloChar/FloChar/obj/Debug/netcoreapp2.1/FloChar.dll
+C:/Users/jacob/source/repos/FloChar/FloChar/obj/Debug/netcoreapp2.1/FloChar.pdb
+C:/Users/jacob/source/repos/FloChar/FloChar/obj/Debug/netcoreapp2.1/FloChar.csproj.CopyComplete
+C:/Users/jacob/source/repos/FloChar/FloChar/obj/Debug/netcoreapp2.1/UserSecretsAssemblyInfo.cs
+C:/Users/jacob/source/repos/FloChar/FloChar/obj/Debug/netcoreapp2.1/Razor/Pages/AskQuestion.cshtml.g.cs
+C:/Users/jacob/source/repos/FloChar/FloChar/obj/Debug/netcoreapp2.1/Razor/Pages/QuestionForum.cshtml.g.cs
+/Users/John/Desktop/Senior Software Project/FloChar1/bin/Debug/netcoreapp2.1/appsettings.Development.json
+/Users/John/Desktop/Senior Software Project/FloChar1/bin/Debug/netcoreapp2.1/appsettings.json
+/Users/John/Desktop/Senior Software Project/FloChar1/bin/Debug/netcoreapp2.1/Properties/launchSettings.json
+/Users/John/Desktop/Senior Software Project/FloChar1/bin/Debug/netcoreapp2.1/FloChar.deps.json
+/Users/John/Desktop/Senior Software Project/FloChar1/bin/Debug/netcoreapp2.1/FloChar.runtimeconfig.json
+/Users/John/Desktop/Senior Software Project/FloChar1/bin/Debug/netcoreapp2.1/FloChar.runtimeconfig.dev.json
+/Users/John/Desktop/Senior Software Project/FloChar1/bin/Debug/netcoreapp2.1/FloChar.dll
+/Users/John/Desktop/Senior Software Project/FloChar1/bin/Debug/netcoreapp2.1/FloChar.pdb
+/Users/John/Desktop/Senior Software Project/FloChar1/bin/Debug/netcoreapp2.1/FloChar.Views.dll
+/Users/John/Desktop/Senior Software Project/FloChar1/bin/Debug/netcoreapp2.1/FloChar.Views.pdb
+/Users/John/Desktop/Senior Software Project/FloChar1/obj/Debug/netcoreapp2.1/FloChar.csprojAssemblyReference.cache
+/Users/John/Desktop/Senior Software Project/FloChar1/obj/Debug/netcoreapp2.1/FloChar.RazorAssemblyInfo.cache
+/Users/John/Desktop/Senior Software Project/FloChar1/obj/Debug/netcoreapp2.1/FloChar.RazorAssemblyInfo.cs
+/Users/John/Desktop/Senior Software Project/FloChar1/obj/Debug/netcoreapp2.1/UserSecretsAssemblyInfo.cs
+/Users/John/Desktop/Senior Software Project/FloChar1/obj/Debug/netcoreapp2.1/FloChar.AssemblyInfoInputs.cache
+/Users/John/Desktop/Senior Software Project/FloChar1/obj/Debug/netcoreapp2.1/FloChar.AssemblyInfo.cs
+/Users/John/Desktop/Senior Software Project/FloChar1/obj/Debug/netcoreapp2.1/FloChar.TagHelpers.input.cache
+/Users/John/Desktop/Senior Software Project/FloChar1/obj/Debug/netcoreapp2.1/FloChar.TagHelpers.output.cache
+/Users/John/Desktop/Senior Software Project/FloChar1/obj/Debug/netcoreapp2.1/FloChar.RazorCoreGenerate.cache
+/Users/John/Desktop/Senior Software Project/FloChar1/obj/Debug/netcoreapp2.1/Razor/Areas/Identity/Pages/_ViewStart.cshtml.g.cs
+/Users/John/Desktop/Senior Software Project/FloChar1/obj/Debug/netcoreapp2.1/Razor/Pages/About.cshtml.g.cs
+/Users/John/Desktop/Senior Software Project/FloChar1/obj/Debug/netcoreapp2.1/Razor/Pages/AskQuestion.cshtml.g.cs
+/Users/John/Desktop/Senior Software Project/FloChar1/obj/Debug/netcoreapp2.1/Razor/Pages/Contact.cshtml.g.cs
+/Users/John/Desktop/Senior Software Project/FloChar1/obj/Debug/netcoreapp2.1/Razor/Pages/Error.cshtml.g.cs
+/Users/John/Desktop/Senior Software Project/FloChar1/obj/Debug/netcoreapp2.1/Razor/Pages/Index.cshtml.g.cs
+/Users/John/Desktop/Senior Software Project/FloChar1/obj/Debug/netcoreapp2.1/Razor/Pages/Privacy.cshtml.g.cs
+/Users/John/Desktop/Senior Software Project/FloChar1/obj/Debug/netcoreapp2.1/Razor/Pages/QuestionForum.cshtml.g.cs
+/Users/John/Desktop/Senior Software Project/FloChar1/obj/Debug/netcoreapp2.1/Razor/Pages/Shared/_CookieConsentPartial.cshtml.g.cs
+/Users/John/Desktop/Senior Software Project/FloChar1/obj/Debug/netcoreapp2.1/Razor/Pages/Shared/_Layout.cshtml.g.cs
+/Users/John/Desktop/Senior Software Project/FloChar1/obj/Debug/netcoreapp2.1/Razor/Pages/Shared/_LoginPartial.cshtml.g.cs
+/Users/John/Desktop/Senior Software Project/FloChar1/obj/Debug/netcoreapp2.1/Razor/Pages/Shared/_ValidationScriptsPartial.cshtml.g.cs
+/Users/John/Desktop/Senior Software Project/FloChar1/obj/Debug/netcoreapp2.1/Razor/Pages/_ViewImports.cshtml.g.cs
+/Users/John/Desktop/Senior Software Project/FloChar1/obj/Debug/netcoreapp2.1/Razor/Pages/_ViewStart.cshtml.g.cs
+/Users/John/Desktop/Senior Software Project/FloChar1/obj/Debug/netcoreapp2.1/FloChar.RazorTargetAssemblyInfo.cache
+/Users/John/Desktop/Senior Software Project/FloChar1/obj/Debug/netcoreapp2.1/FloChar.RazorTargetAssemblyInfo.cs
+/Users/John/Desktop/Senior Software Project/FloChar1/obj/Debug/netcoreapp2.1/FloChar.Views.pdb
+/Users/John/Desktop/Senior Software Project/FloChar1/obj/Debug/netcoreapp2.1/FloChar.dll
+/Users/John/Desktop/Senior Software Project/FloChar1/obj/Debug/netcoreapp2.1/FloChar.pdb
+/Users/John/Desktop/Senior Software Project/FloChar1/obj/Debug/netcoreapp2.1/FloChar.csproj.CopyComplete
+/Users/John/Desktop/Senior Software Project/FloChar/bin/Debug/netcoreapp2.1/appsettings.Development.json
+/Users/John/Desktop/Senior Software Project/FloChar/bin/Debug/netcoreapp2.1/appsettings.json
+/Users/John/Desktop/Senior Software Project/FloChar/bin/Debug/netcoreapp2.1/Properties/launchSettings.json
+/Users/John/Desktop/Senior Software Project/FloChar/bin/Debug/netcoreapp2.1/FloChar.deps.json
+/Users/John/Desktop/Senior Software Project/FloChar/bin/Debug/netcoreapp2.1/FloChar.runtimeconfig.json
+/Users/John/Desktop/Senior Software Project/FloChar/bin/Debug/netcoreapp2.1/FloChar.runtimeconfig.dev.json
+/Users/John/Desktop/Senior Software Project/FloChar/bin/Debug/netcoreapp2.1/FloChar.dll
+/Users/John/Desktop/Senior Software Project/FloChar/bin/Debug/netcoreapp2.1/FloChar.pdb
+/Users/John/Desktop/Senior Software Project/FloChar/bin/Debug/netcoreapp2.1/FloChar.Views.dll
+/Users/John/Desktop/Senior Software Project/FloChar/bin/Debug/netcoreapp2.1/FloChar.Views.pdb
+/Users/John/Desktop/Senior Software Project/FloChar/obj/Debug/netcoreapp2.1/FloChar.csprojAssemblyReference.cache
+/Users/John/Desktop/Senior Software Project/FloChar/obj/Debug/netcoreapp2.1/FloChar.RazorAssemblyInfo.cache
+/Users/John/Desktop/Senior Software Project/FloChar/obj/Debug/netcoreapp2.1/FloChar.RazorAssemblyInfo.cs
+/Users/John/Desktop/Senior Software Project/FloChar/obj/Debug/netcoreapp2.1/UserSecretsAssemblyInfo.cs
+/Users/John/Desktop/Senior Software Project/FloChar/obj/Debug/netcoreapp2.1/FloChar.AssemblyInfoInputs.cache
+/Users/John/Desktop/Senior Software Project/FloChar/obj/Debug/netcoreapp2.1/FloChar.AssemblyInfo.cs
+/Users/John/Desktop/Senior Software Project/FloChar/obj/Debug/netcoreapp2.1/FloChar.TagHelpers.input.cache
+/Users/John/Desktop/Senior Software Project/FloChar/obj/Debug/netcoreapp2.1/FloChar.TagHelpers.output.cache
+/Users/John/Desktop/Senior Software Project/FloChar/obj/Debug/netcoreapp2.1/FloChar.RazorCoreGenerate.cache
+/Users/John/Desktop/Senior Software Project/FloChar/obj/Debug/netcoreapp2.1/Razor/Areas/Identity/Pages/_ViewStart.cshtml.g.cs
+/Users/John/Desktop/Senior Software Project/FloChar/obj/Debug/netcoreapp2.1/Razor/Pages/About.cshtml.g.cs
+/Users/John/Desktop/Senior Software Project/FloChar/obj/Debug/netcoreapp2.1/Razor/Pages/AskQuestion.cshtml.g.cs
+/Users/John/Desktop/Senior Software Project/FloChar/obj/Debug/netcoreapp2.1/Razor/Pages/Contact.cshtml.g.cs
+/Users/John/Desktop/Senior Software Project/FloChar/obj/Debug/netcoreapp2.1/Razor/Pages/Error.cshtml.g.cs
+/Users/John/Desktop/Senior Software Project/FloChar/obj/Debug/netcoreapp2.1/Razor/Pages/Index.cshtml.g.cs
+/Users/John/Desktop/Senior Software Project/FloChar/obj/Debug/netcoreapp2.1/Razor/Pages/Privacy.cshtml.g.cs
+/Users/John/Desktop/Senior Software Project/FloChar/obj/Debug/netcoreapp2.1/Razor/Pages/QuestionForum.cshtml.g.cs
+/Users/John/Desktop/Senior Software Project/FloChar/obj/Debug/netcoreapp2.1/Razor/Pages/Shared/_CookieConsentPartial.cshtml.g.cs
+/Users/John/Desktop/Senior Software Project/FloChar/obj/Debug/netcoreapp2.1/Razor/Pages/Shared/_Layout.cshtml.g.cs
+/Users/John/Desktop/Senior Software Project/FloChar/obj/Debug/netcoreapp2.1/Razor/Pages/Shared/_LoginPartial.cshtml.g.cs
+/Users/John/Desktop/Senior Software Project/FloChar/obj/Debug/netcoreapp2.1/Razor/Pages/Shared/_ValidationScriptsPartial.cshtml.g.cs
+/Users/John/Desktop/Senior Software Project/FloChar/obj/Debug/netcoreapp2.1/Razor/Pages/_ViewImports.cshtml.g.cs
+/Users/John/Desktop/Senior Software Project/FloChar/obj/Debug/netcoreapp2.1/Razor/Pages/_ViewStart.cshtml.g.cs
+/Users/John/Desktop/Senior Software Project/FloChar/obj/Debug/netcoreapp2.1/FloChar.RazorTargetAssemblyInfo.cache
+/Users/John/Desktop/Senior Software Project/FloChar/obj/Debug/netcoreapp2.1/FloChar.RazorTargetAssemblyInfo.cs
+/Users/John/Desktop/Senior Software Project/FloChar/obj/Debug/netcoreapp2.1/FloChar.Views.pdb
+/Users/John/Desktop/Senior Software Project/FloChar/obj/Debug/netcoreapp2.1/FloChar.dll
+/Users/John/Desktop/Senior Software Project/FloChar/obj/Debug/netcoreapp2.1/FloChar.pdb
+/Users/John/Desktop/Senior Software Project/FloChar/obj/Debug/netcoreapp2.1/FloChar.csproj.CopyComplete

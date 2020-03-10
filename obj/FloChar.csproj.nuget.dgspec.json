@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/John/Downloads/FloChar/FloChar/FloChar.csproj": {}
+    "/Users/John/Desktop/Senior Software Project/FloChar/FloChar.csproj": {}
   },
   "projects": {
-    "/Users/John/Downloads/FloChar/FloChar/FloChar.csproj": {
+    "/Users/John/Desktop/Senior Software Project/FloChar/FloChar.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/John/Downloads/FloChar/FloChar/FloChar.csproj",
+        "projectUniqueName": "/Users/John/Desktop/Senior Software Project/FloChar/FloChar.csproj",
         "projectName": "FloChar",
-        "projectPath": "/Users/John/Downloads/FloChar/FloChar/FloChar.csproj",
+        "projectPath": "/Users/John/Desktop/Senior Software Project/FloChar/FloChar.csproj",
         "packagesPath": "/Users/John/.nuget/packages/",
-        "outputPath": "/Users/John/Downloads/FloChar/FloChar/obj/",
+        "outputPath": "/Users/John/Desktop/Senior Software Project/FloChar/obj/",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
