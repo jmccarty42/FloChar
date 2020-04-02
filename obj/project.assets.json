@@ -12614,28 +12614,26 @@
     ]
   },
   "packageFolders": {
-    "/Users/John/.nuget/packages/": {},
-    "/usr/local/share/dotnet/sdk/NuGetFallbackFolder": {}
+    "C:\\Users\\rober\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/John/Desktop/Senior Software Project/FloChar/FloChar.csproj",
+      "projectUniqueName": "C:\\Users\\rober\\OneDrive\\Code\\Flochar\\FloChar.csproj",
       "projectName": "FloChar",
-      "projectPath": "/Users/John/Desktop/Senior Software Project/FloChar/FloChar.csproj",
-      "packagesPath": "/Users/John/.nuget/packages/",
-      "outputPath": "/Users/John/Desktop/Senior Software Project/FloChar/obj/",
+      "projectPath": "C:\\Users\\rober\\OneDrive\\Code\\Flochar\\FloChar.csproj",
+      "packagesPath": "C:\\Users\\rober\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\rober\\OneDrive\\Code\\Flochar\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
-      ],
       "configFilePaths": [
-        "/Users/John/.config/NuGet/NuGet.Config"
+        "C:\\Users\\rober\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.1"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -12688,7 +12686,7 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.1.102/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
       }
     }
   }

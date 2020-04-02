@@ -13,6 +13,60 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Remove="wwwroot\lib\dtl_algorithm\DecisionTree.py" />
+    <Content Remove="wwwroot\lib\dtl_algorithm\index.html" />
+    <Content Remove="wwwroot\lib\dtl_algorithm\test_data.csv" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\lib\dtl_algorithm\css\site.css" />
+    <None Include="wwwroot\lib\dtl_algorithm\css\site.min.css" />
+    <None Include="wwwroot\lib\dtl_algorithm\DecisionTree.py" />
+    <None Include="wwwroot\lib\dtl_algorithm\favicon.ico" />
+    <None Include="wwwroot\lib\dtl_algorithm\images\banner1.svg" />
+    <None Include="wwwroot\lib\dtl_algorithm\images\banner2.svg" />
+    <None Include="wwwroot\lib\dtl_algorithm\images\banner3.svg" />
+    <None Include="wwwroot\lib\dtl_algorithm\images\goals.jpg" />
+    <None Include="wwwroot\lib\dtl_algorithm\index.html" />
+    <None Include="wwwroot\lib\dtl_algorithm\js\questionHandler.js" />
+    <None Include="wwwroot\lib\dtl_algorithm\js\site.js" />
+    <None Include="wwwroot\lib\dtl_algorithm\kr-vs-kp.csv" />
+    <None Include="wwwroot\lib\dtl_algorithm\lib\bootstrap\dist\css\bootstrap-theme.css" />
+    <None Include="wwwroot\lib\dtl_algorithm\lib\bootstrap\dist\css\bootstrap-theme.css.map" />
+    <None Include="wwwroot\lib\dtl_algorithm\lib\bootstrap\dist\css\bootstrap-theme.min.css" />
+    <None Include="wwwroot\lib\dtl_algorithm\lib\bootstrap\dist\css\bootstrap-theme.min.css.map" />
+    <None Include="wwwroot\lib\dtl_algorithm\lib\bootstrap\dist\css\bootstrap.css" />
+    <None Include="wwwroot\lib\dtl_algorithm\lib\bootstrap\dist\css\bootstrap.css.map" />
+    <None Include="wwwroot\lib\dtl_algorithm\lib\bootstrap\dist\css\bootstrap.min.css" />
+    <None Include="wwwroot\lib\dtl_algorithm\lib\bootstrap\dist\css\bootstrap.min.css.map" />
+    <None Include="wwwroot\lib\dtl_algorithm\lib\bootstrap\dist\fonts\glyphicons-halflings-regular.eot" />
+    <None Include="wwwroot\lib\dtl_algorithm\lib\bootstrap\dist\fonts\glyphicons-halflings-regular.svg" />
+    <None Include="wwwroot\lib\dtl_algorithm\lib\bootstrap\dist\fonts\glyphicons-halflings-regular.ttf" />
+    <None Include="wwwroot\lib\dtl_algorithm\lib\bootstrap\dist\fonts\glyphicons-halflings-regular.woff" />
+    <None Include="wwwroot\lib\dtl_algorithm\lib\bootstrap\dist\fonts\glyphicons-halflings-regular.woff2" />
+    <None Include="wwwroot\lib\dtl_algorithm\lib\bootstrap\dist\js\bootstrap.js" />
+    <None Include="wwwroot\lib\dtl_algorithm\lib\bootstrap\dist\js\bootstrap.min.js" />
+    <None Include="wwwroot\lib\dtl_algorithm\lib\bootstrap\dist\js\npm.js" />
+    <None Include="wwwroot\lib\dtl_algorithm\lib\bootstrap\LICENSE" />
+    <None Include="wwwroot\lib\dtl_algorithm\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.js" />
+    <None Include="wwwroot\lib\dtl_algorithm\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.min.js" />
+    <None Include="wwwroot\lib\dtl_algorithm\lib\jquery-validation-unobtrusive\LICENSE.txt" />
+    <None Include="wwwroot\lib\dtl_algorithm\lib\jquery-validation\dist\additional-methods.js" />
+    <None Include="wwwroot\lib\dtl_algorithm\lib\jquery-validation\dist\additional-methods.min.js" />
+    <None Include="wwwroot\lib\dtl_algorithm\lib\jquery-validation\dist\jquery.validate.js" />
+    <None Include="wwwroot\lib\dtl_algorithm\lib\jquery-validation\dist\jquery.validate.min.js" />
+    <None Include="wwwroot\lib\dtl_algorithm\lib\jquery-validation\LICENSE.md" />
+    <None Include="wwwroot\lib\dtl_algorithm\lib\jquery\dist\jquery.js" />
+    <None Include="wwwroot\lib\dtl_algorithm\lib\jquery\dist\jquery.min.js" />
+    <None Include="wwwroot\lib\dtl_algorithm\lib\jquery\dist\jquery.min.map" />
+    <None Include="wwwroot\lib\dtl_algorithm\lib\jquery\LICENSE.txt" />
+    <None Include="wwwroot\lib\dtl_algorithm\RestWaitGraph.png" />
+    <None Include="wwwroot\lib\dtl_algorithm\test2.png" />
+    <None Include="wwwroot\lib\dtl_algorithm\test_data.csv" />
+    <None Include="wwwroot\lib\dtl_algorithm\tic-tac-toe.csv" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App">
       <PrivateAssets Condition="'%(PackageReference.Version)' == ''">all</PrivateAssets>
       <Publish Condition="'%(PackageReference.Version)' == ''">true</Publish>
@@ -20,6 +74,18 @@
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.10" />
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="2.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="wwwroot\lib\dtl_algorithm\treeData2.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="dtl_algorithm\" />
   </ItemGroup>
 
 </Project>
