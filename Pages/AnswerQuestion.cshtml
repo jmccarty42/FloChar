@@ -1,0 +1,31 @@
+﻿@page
+@model FloChar.AnswerQuestionModel
+@{
+    ViewData["Title"] = "AnswerQuestion";
+}
+
+<script src="~/js/questionHandler.js"></script>
+
+<h1>Answer Questions</h1>
+@foreach (var rootQuestion in Model.RootQuestions)
+{
+    <div>
+        <h4>@rootQuestion.Name</h4>
+        @foreach (var subQuestion in Model.SubQuestions)
+        {
+            @if (subQuestion.RootId == rootQuestion.Id)
+            {
+                <div>
+                    <label>@subQuestion.Name</label>
+                    <div>
+                        <div><input class="subQuestionAnswer form-control" type="text" name="question" placeholder="Type Answer Here" maxlength="255" /></div>
+                    </div>
+                </div>
+                <br />
+                }
+            }
+        <br />
+    </div>
+}
+<button class="btn btn-primary" type="submit" onclick="postQuestion()">Submit</button>
+<br />
