@@ -5,31 +5,73 @@
 }
 
 <script src="~/js/questionHandler.js"></script>
+<script>
+    function jsonize_answers(id, subIds) {
+        console.log(subIds);
+        for (var sid in subIds){
+            yes_button = document.getElementsByClassName(id + "-" + sid).getElementById("Yes").value;
 
+            if (yes_button) {
+                answerQuestion(id, sid, "Yes")
+            }
+            else {
+                answerQuestion(id, sid, "No")
+            }
+        }
+    }
+        
+</script>
 <h1>Answer Questions</h1>
 @foreach (var rootQuestion in Model.RootQuestions)
 {
 <div>
-    <h4>@rootQuestion.Name</h4>
-    @foreach (var subQuestion in Model.SubQuestions)
-    {
-        @if (subQuestion.RootId == rootQuestion.Id)
-        {
-            <div>
-                <label>@subQuestion.Name</label>
-                <div>
-                    <div><input class="subQuestionAnswer form-control" id="@subQuestion.Id" type="text" name="answer" placeholder="Type Answer Here" maxlength="255" /></div>
-                </div>
-            </div>
-            <br />
-        }
-    }
+    <div href="/treedisplay" class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapse-@rootQuestion.Id" aria-expanded="false" aria-controls="collapse-@rootQuestion.Id;">
+        <p>@rootQuestion.Name</p>
+    </div>
+    <div class="collapse" id="collapse-@rootQuestion.Id">
+        <div class="card card-body">
+            <h4>@rootQuestion.Name</h4>
+            @{List<int> subIds = new List<int>();}
+            @foreach (Models.SubQuestion subQuestion in Model.SubQuestions)
+            {
+                subIds.Add(subQuestion.Id);
 
-    <button class="btn btn-primary" type="submit" onclick="answerQuestion(rootQuestion.Id)">Submit</button>
-    <br />
-    <br />
-    <br />
+                @if (subQuestion.RootId == rootQuestion.Id)
+                {
+
+
+                    <div>
+                        <label>@subQuestion.Name</label>
+                        <div>
+                            <div>
+                                <label>Yes&emsp;</label><input class="@rootQuestion.Id-@subQuestion.Id" id="Yes" type="radio" name="@subQuestion.Id-radio" value="Yes" /><br />
+                                <label>No&emsp;</label><input class="@rootQuestion.Id-@subQuestion.Id" id="No" type="radio" name="@subQuestion.Id-radio" value="No" />
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <br />
+                }
+            }
+            @{string s = "";} 
+            @foreach (int id in subIds)
+            { s += id + ","; }
+            <button class="btn btn-primary" onclick="answerQuestion(@rootQuestion.Id, [@s])">Submit</button>
+            <br />
+
+            <br />
+
+            <br />
+
+
+
+
+        </div>
+
 </div>
-    
+</div>
+<br />
 }
+
 

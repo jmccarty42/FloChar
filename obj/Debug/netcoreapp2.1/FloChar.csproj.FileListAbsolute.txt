@@ -158,3 +158,4 @@ C:\Users\rober\OneDrive\Code\Flochar\obj\Debug\netcoreapp2.1\FloChar.pdb
 C:\Users\rober\OneDrive\Code\Flochar\obj\Debug\netcoreapp2.1\FloChar.genruntimeconfig.cache
 C:\Users\rober\OneDrive\Code\Flochar\obj\Debug\netcoreapp2.1\FloChar.csproj.CopyComplete
 C:\Users\rober\OneDrive\Code\Flochar\obj\Debug\netcoreapp2.1\FloChar.csprojAssemblyReference.cache
+C:\Users\rober\OneDrive\Code\Flochar\obj\Debug\netcoreapp2.1\Razor\Pages\AnswerQuestion.cshtml.g.cs

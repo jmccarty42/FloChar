@@ -65,7 +65,7 @@ using FloChar.Data;
             WriteLiteral("\r\n<!DOCTYPE html>\r\n<html lang=\"en\">\r\n");
             EndContext();
             BeginContext(130, 435, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1270d61056394100a96b38230221ee54", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "740c94d445ba46799db00e1cef255140", async() => {
                 BeginContext(136, 422, true);
                 WriteLiteral(@"
     <meta charset=""utf-8"">
@@ -109,7 +109,7 @@ using FloChar.Data;
             WriteLiteral("\r\n\r\n");
             EndContext();
             BeginContext(569, 2100, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1574bf7322eb433b965e57a52898862a", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5a9b1d1164df4f3098d06dca75a9c73b", async() => {
                 BeginContext(575, 2087, true);
                 WriteLiteral(@"
     <div id=""svgholder""></div>

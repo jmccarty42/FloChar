@@ -51,7 +51,8 @@ namespace FloChar.Controllers
             };
         }
 
-        [HttpPost]
+        [HttpPost("add")]
+        //[Route("api/Question/add")]
         public IActionResult PostUserQuestion([FromBody] AskedQuestions askedQuestions)
         {
             RootQuestion rootQuestion = new RootQuestion
@@ -76,5 +77,74 @@ namespace FloChar.Controllers
 
             return NoContent();
         }
+
+        [HttpPost("answer/{rootid}/{id}/{value}")]
+        public IActionResult PostUserAnswer(int rootid, int id, string value)
+        {
+            _context.Answers.Add(new Answer{ QuestionId = id, Value = value });
+
+            _context.SaveChanges();
+            return NoContent();
+        }
+
+        [HttpGet("api/tree/{rootId}")]
+        public IActionResult GetTreeJson(int rootId)
+        {
+            UserQuestionAnswerSet uqas = GetUserQuestionsById(rootId).Value;
+            string csvHeader = "";
+            List<List<string> > answers = new List<List<string> >();
+            int counter = 0;
+            foreach (AnsweredSubQuestion asq in uqas.AnsweredSubQuestions)
+            {
+                csvHeader += asq.SubQuestion.Name+",";
+                foreach (Answer ans in asq.Answers)
+                {
+                    answers[counter].Add(ans.)
+                }
+                counter++;
+            }
+            csvHeader.Remove(csvHeader.LastIndexOf(","));
+
+
+            String command = @"python wwwroot/lib/dtl_algorithm/DecisionTree.py -f wwwroot/lib/dtl_algorithm/test_data.csv -o wwwroot/lib/dtl_algorithm/treeData.json";
+            ProcessStartInfo cmdsi = new ProcessStartInfo("cmd.exe");
+            cmdsi.Arguments = command;
+            Process cmd = Process.Start(cmdsi);
+            cmd.WaitForExit()
+            string output = p.StandardOutput.ReadToEnd();
+            p.WaitForExit();
+        }
+
+        public IActionResult DeleteUserQuestionByUQAS([FromBody] UserQuestionAnswerSet q)
+        {
+            foreach (AnsweredSubQuestion asq in q.AnsweredSubQuestions)
+            {
+                foreach (Answer a in asq.Answers)
+                {
+                    _context.Answers.Remove(a);
+                }
+                _context.SubQuestions.Remove(asq.SubQuestion);
+            }
+
+            _context.RootQuestions.Remove(q.RootQuestion);
+
+            _context.SaveChanges();
+
+            return NoContent();
+        }
+        [HttpPost("delete/{rootId}")]
+        //[Route("api/Question/delete")]
+        public IActionResult DeleteUserQuestionByRoot(int rootId)
+        {
+            
+            DeleteUserQuestionByUQAS(GetUserQuestionsById(rootId).Value);
+
+            return NoContent();
+        }
+
+        //public string GetDTLByRoot(RootQuestion root)
+        //{
+
+        //}
     }
 }

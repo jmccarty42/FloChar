@@ -11,7 +11,7 @@
 
     $.ajax({
         type: "POST",
-        url: "/api/question",        
+        url: "/api/Question/add",
         dataType: 'json',
         contentType: 'application/json',
         success: function (response) {
@@ -26,18 +26,46 @@ function addSubQuestion() {
     $(element).appendTo("#subQuestions");
 }
 
-function deleteSubQuestion() {
-    //TODO
+function deleteQuestion(id) {
+
+    $.ajax({
+        type: "POST",
+        url: "/api/Question/delete/" + id,
+        dataType: 'json',
+        contentType: 'application/json',
+        //success: function (response) {
+        //    $(':input').val('');
+        //},
+        data: null
+    });
 }
 
-function answerQuestion(rootId) {
+function getJsonForTree(rootId) {
+    var d = 0
+    $.ajax({
+        type: "GET",
+        url: "/api/tree/" + rootId,
+        success: function (data) {
+            d = data;
+        }
+    });
+    return d;
+}
 
+function answerQuestion(rootId, sid, value) {
+    $.ajax({
+        type: "POST",
+        url: "/api/Question/answer/" + rootId + "/" + sid + "/" + value,
+        dataType: 'json',
+        contentType: 'application/json',
+        data: null
+    });
 }
 
 function getUserQuestionSet(id) {
     $.ajax({
         type: "GET",
-        url: "/api/question/"+id,
+        url: "/api/question/" + id,
         success: function (data) {
             document.getElementById('collapse-' + id).innerHTML = '';
             //document.getElementById('collapse-' + id).innerText = JSON.stringify(data);
@@ -45,11 +73,11 @@ function getUserQuestionSet(id) {
             subQuestions.forEach(function (item) {
                 var subQuestion = item.subQuestion;
                 document.getElementById('collapse-' + id).innerHTML +=
-                    '<p>' + subQuestion.name  +
+                    '<p>' + subQuestion.name +
                     '<div class="m-3"><input class="form-check-input m-3" type="radio" name="y' + subQuestion.id + '" id="y' + subQuestion.id + '" value="option1" checked>' +
                     '<label class="form-check-label m-3 p-3" for="y' + subQuestion.id + '">Yes</label></div>' +
                     '<div class="m-3"><input class="form-check-input m-3" type="radio" name="y' + subQuestion.id + '" id="y' + subQuestion.id + '" value="option1">' +
-                    '<label class="form-check-label m-3" for="y' + subQuestion.id + '">No</label></div><br />' + '</p>'; 
+                    '<label class="form-check-label m-3" for="y' + subQuestion.id + '">No</label></div><br />' + '</p>';
             });
             document.getElementById('collapse-' + id).innerHTML += '<button class="btn btn-success" onclick="">Submit</button><br/><br/>';
         }

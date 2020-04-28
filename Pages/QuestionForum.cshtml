@@ -1,25 +1,145 @@
 ﻿@page
+@using FloChar.Controllers
 @model FloChar.QuestionForumModel
 @{
     ViewData["Title"] = "QuestionForum";
 }
 
 <script src="~/js/questionHandler.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script>
+@for (int i = 0; i < 10; i++)
+{
+    <script>console.log(@i)</script>
+}
 
-<h2>QuestionForum</h2>
 
+<head>
+    <meta charset="utf-8">
+
+    <title>Collapsible Tree Example</title>
+
+    <style>
+
+        .node circle {
+            fill: #fff;
+            stroke: rgb(0, 0, 0);
+            stroke-width: 3px;
+        }
+
+        .node text {
+            font: 18px sans-serif;
+        }
+
+        .link {
+            fill: none;
+            stroke: #ccc;
+            stroke-width: 2px;
+        }
+    </style>
+
+
+
+</head>
 @foreach (var rootQuestion in Model.RootQuestions)
 {
-    <div>
-        <p>
-            <a href="/treedisplay" class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapse-@rootQuestion.Id" aria-expanded="false" aria-controls="collapse-@rootQuestion.Id;">
-                @rootQuestion.Name
-            </a>
-        </p>
-        <div class="collapse" id="collapse-@rootQuestion.Id">
-            <div class="card card-body">
-                Loading...
-            </div>
+
+}
+<script>
+    // ************** Generate the tree diagram	 *****************
+    //console.log("here");
+    function drawTree(id) {
+        var margin = { top: 50, right: 50, bottom: 50, left: 50 },
+            width = 500 - margin.right - margin.left,
+            height = 500 - margin.top - margin.bottom;
+
+        var i = 0;
+
+        var tree = d3.layout.tree()
+            .size([width, height]);
+
+        var diagonal = d3.svg.diagonal()
+            .projection(function (d) { return [d.x, d.y]; });
+        console.log("#svgholder" + id);
+        var svg = d3.select("#svgholder-" + id).append("svg")
+            .attr("width", width + margin.right + margin.left)
+            .attr("height", height + margin.top + margin.bottom)
+            .attr("class", "tree" + id)
+            .append("g")
+            .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+
+        // load the external data
+        d3.json(getJsonForTree(id), function (error, treeData) {
+            root = treeData[0];
+            update(root);
+        });
+
+        function update(source) {
+
+            // Compute the new tree layout.
+            var nodes = tree.nodes(root).reverse(),
+                links = tree.links(nodes);
+
+            // Normalize for fixed-depth.
+            nodes.forEach(function (d) { d.y = d.depth * 50; });
+
+            // Declare the nodes…
+            var node = svg.selectAll("g.node")
+                .data(nodes, function (d) {/* console.log(d.name + "\t\t\t\t" + d.is_link);*/ return d.id || (d.id = ++i); });
+
+            // Enter the nodes.
+            var nodeEnter = node.enter().append("g")
+                .attr("class", "node")
+                .attr("transform", function (d) {
+                    console.log("test");
+                    return "translate(" + d.x + "," + d.y + ")";
+                });
+
+            nodeEnter.append("circle")
+                .attr("r", 5)
+                .style("fill", "#fff");
+
+            nodeEnter.append("text")
+                .attr("y", function (d) {
+                    return d.children || d._children ? -18 : 18;
+                })
+                .attr("dy", ".35em")
+                .attr("text-anchor", "middle")
+                .text(function (d) { return d.name; })
+                .style("fill-opacity", 1);
+
+            // Declare the links…
+            var link = svg.selectAll("path.link")
+                .data(links, function (d) { return d.target.id; });
+
+            // Enter the links.
+            link.enter().insert("path", "g")
+                .attr("class", "link")
+                .attr("d", diagonal);
+
+        }
+    }
+    function hideDiv(id) {
+        var div = document.getElementById('question-'+id);
+        if (div.style.display !== 'none') {
+            div.style.display = 'none';
+        }
+        else {
+            div.style.display = 'block';
+        }
+    }
+</script>
+<h2>Previously Created Questions</h2>
+@foreach (var rootQuestion in Model.RootQuestions)
+{
+    <div id="question-@rootQuestion.Id" style="display: normal">
+        <div href="/treedisplay" class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapse-@rootQuestion.Id" aria-expanded="false" aria-controls="collapse-@rootQuestion.Id;" style="background-color:antiquewhite; color:black; width:960px">
+            <h1>@rootQuestion.Name</h1>
+            <div id="svgholder-@rootQuestion.Id"></div>
+            <script>drawTree(@rootQuestion.Id)</script>
+            <p>123 Answers</p>
+           @* <button onclick="deleteQuestion(@rootQuestion.Id); hideDiv(@rootQuestion.Id)">Delete Question?</button>*@
         </div>
     </div>
+    <br />
 }
