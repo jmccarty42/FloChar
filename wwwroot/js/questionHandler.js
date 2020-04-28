@@ -30,6 +30,10 @@ function deleteSubQuestion() {
     //TODO
 }
 
+function answerQuestion() {
+
+}
+
 function getUserQuestionSet(id) {
     $.ajax({
         type: "GET",
