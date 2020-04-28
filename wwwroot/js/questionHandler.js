@@ -30,7 +30,7 @@ function deleteSubQuestion() {
     //TODO
 }
 
-function answerQuestion() {
+function answerQuestion(rootId) {
 
 }
 
