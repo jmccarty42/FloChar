@@ -14,6 +14,7 @@
 
 
 <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <meta charset="utf-8">
 
     <title>Collapsible Tree Example</title>
@@ -48,10 +49,29 @@
     // ************** Generate the tree diagram	 *****************
     //console.log("here");
     function drawTree(id) {
-        var margin = { top: 50, right: 50, bottom: 50, left: 50 },
-            width = 500 - margin.right - margin.left,
-            height = 500 - margin.top - margin.bottom;
+        var maxdim = 0;
+        function update_maxdim(x) { maxdim = x;}
 
+        // load the external data
+        //var tree_json = new Promise(
+        //    function (resolve, reject) {
+        //    // Only `delay` is able to resolve or reject the promise
+        //        setTimeout(function () {
+        //            resolve(getJsonForTree(id)); // After 3 seconds, resolve the promise with value 42
+        //        }, 3000);
+        //});
+        
+        //var tree_json = getJsonForTree(id);
+       
+       d3.json("/api/Question/tree/" + id, maxdim = function (error, treeData, maxdim) {
+           root = treeData[0];
+           update(root);
+        });
+        
+        var margin = { top: 50, right: 50, bottom: 50, left: 50 },
+            width = 960 - margin.right - margin.left,
+            height = 960 - margin.top - margin.bottom;
+            
         var i = 0;
 
         var tree = d3.layout.tree()
@@ -67,13 +87,6 @@
             .append("g")
             .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-
-        // load the external data
-        d3.json(getJsonForTree(id), function (error, treeData) {
-            root = treeData[0];
-            update(root);
-        });
-
         function update(source) {
 
             // Compute the new tree layout.
@@ -81,8 +94,21 @@
                 links = tree.links(nodes);
 
             // Normalize for fixed-depth.
-            nodes.forEach(function (d) { d.y = d.depth * 50; });
-
+            var yscale = 100;
+            var maxy = 0;
+            var maxx = 0;
+            nodes.forEach(function (d) { d.y = d.depth * yscale; maxy = d.y > maxy ? d.y : maxy });
+            nodes.forEach(function (d) { maxx = d.x > maxx ? d.x : maxx })
+            //window.alert(maxx)
+            //window.alert(maxy)
+            if (maxx > 960 - margin.left - margin.right) {
+                var scale = 960 / maxx;
+                yscale = yscale * scale;
+            }
+            maxy = 0;
+            maxx = 0;
+            nodes.forEach(function (d) { d.y = d.depth * yscale; maxy = d.y > maxy ? d.y : maxy });
+            nodes.forEach(function (d) { maxx = d.x > maxx ? d.x : maxx })
             // Declare the nodes…
             var node = svg.selectAll("g.node")
                 .data(nodes, function (d) {/* console.log(d.name + "\t\t\t\t" + d.is_link);*/ return d.id || (d.id = ++i); });
@@ -97,11 +123,11 @@
 
             nodeEnter.append("circle")
                 .attr("r", 5)
-                .style("fill", "#fff");
+                .style("fill", "#eaeaff");
 
             nodeEnter.append("text")
                 .attr("y", function (d) {
-                    return d.children || d._children ? -18 : 18;
+                    return d.children || d._children ? -25 : 25;
                 })
                 .attr("dy", ".35em")
                 .attr("text-anchor", "middle")
@@ -117,10 +143,16 @@
                 .attr("class", "link")
                 .attr("d", diagonal);
 
+            return maxy;
+
         }
+        
     }
+    
+</script>
+<script>
     function hideDiv(id) {
-        var div = document.getElementById('question-'+id);
+        var div = document.getElementById('question-' + id);
         if (div.style.display !== 'none') {
             div.style.display = 'none';
         }
@@ -129,16 +161,24 @@
         }
     }
 </script>
+<script>
+    function getNumAnswered(id, num) {
+        document.getElementById("answer-count-" + id).innerText = num + " Answers";
+    }
+
+    
+</script>
 <h2>Previously Created Questions</h2>
 @foreach (var rootQuestion in Model.RootQuestions)
 {
     <div id="question-@rootQuestion.Id" style="display: normal">
-        <div href="/treedisplay" class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapse-@rootQuestion.Id" aria-expanded="false" aria-controls="collapse-@rootQuestion.Id;" style="background-color:antiquewhite; color:black; width:960px">
+        <div href="/treedisplay" class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapse-@rootQuestion.Id" aria-expanded="false" aria-controls="collapse-@rootQuestion.Id;" style="background-color:#eaeaff; color:black; width:960px">
             <h1>@rootQuestion.Name</h1>
             <div id="svgholder-@rootQuestion.Id"></div>
             <script>drawTree(@rootQuestion.Id)</script>
-            <p>123 Answers</p>
-           @* <button onclick="deleteQuestion(@rootQuestion.Id); hideDiv(@rootQuestion.Id)">Delete Question?</button>*@
+            <p id="answer-count-@rootQuestion.Id"></p>
+            <script>getNumAnswers(@rootQuestion.Id, getNumAnswered)</script>
+            <button onclick="deleteQuestionInfo(@rootQuestion.Id); hideDiv(@rootQuestion.Id)">Delete Question?</button>
         </div>
     </div>
     <br />

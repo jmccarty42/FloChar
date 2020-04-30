@@ -1,13 +1,18 @@
-﻿function postQuestion() {
+﻿
+
+function postQuestion() {
     var askedQuestions = {
         RootQuestionName: document.getElementById('rootQuestionInput').value,
         SubQuestionNames: []
+
     }
 
     var subQuestions = document.getElementsByClassName('subQuestionInput');
     for (var i = 0; i < subQuestions.length; i++) {
         askedQuestions.SubQuestionNames.push(subQuestions.item(i).value);
     }
+
+    askedQuestions.SubQuestionNames.push("Final Decision");
 
     $.ajax({
         type: "POST",
@@ -26,8 +31,7 @@ function addSubQuestion() {
     $(element).appendTo("#subQuestions");
 }
 
-function deleteQuestion(id) {
-
+function deleteQuestionInfo(id) {
     $.ajax({
         type: "POST",
         url: "/api/Question/delete/" + id,
@@ -41,18 +45,23 @@ function deleteQuestion(id) {
 }
 
 function getJsonForTree(rootId) {
-    var d = 0
+    //window.alert("Getting tree data id:" + rootId)
+    var d = 0;
+    
     $.ajax({
         type: "GET",
-        url: "/api/tree/" + rootId,
+        url: "/api/Question/tree/" + rootId,
         success: function (data) {
-            d = data;
+            console.log(data);
+            return data;
+            //d = data;
         }
     });
-    return d;
+    //return d;
 }
 
 function answerQuestion(rootId, sid, value) {
+    //window.alert(rootId + "\n" + sid + "\n" + value);
     $.ajax({
         type: "POST",
         url: "/api/Question/answer/" + rootId + "/" + sid + "/" + value,
@@ -61,6 +70,28 @@ function answerQuestion(rootId, sid, value) {
         data: null
     });
 }
+
+function updateGraph(id) {
+    $.ajax({
+        type: "POST",
+        url: "/api/Question/update/" + id,
+        dataType: 'json',
+        contentType: 'application/json',
+        data: null
+    });
+}
+
+function getNumAnswers(id, fun) {
+    var num = 1
+    num = $.ajax({
+        type: "GET",
+        url: "/api/question/" + id,
+        success: function (data) {
+            fun(id, data.answeredSubQuestions[0].answers.length);
+        }
+    });
+   
+ }
 
 function getUserQuestionSet(id) {
     $.ajax({

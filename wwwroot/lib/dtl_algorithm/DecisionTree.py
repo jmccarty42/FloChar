@@ -23,8 +23,10 @@ json format:
 import operator
 from collections import Counter
 import math
+import sys
 import csv
 import pprint
+from io import StringIO
 import argparse
 import time
 import random
@@ -35,20 +37,20 @@ import json
 
 
 # handle args
-parser = argparse.ArgumentParser()
-#parser.add_argument('-p', '--positive', nargs=1, required = True, help='Type the symbol you that denotes a positive label in the .csv')
-parser.add_argument('-f', '--file', nargs=1, required = True, help='The .csv file to read data from. Data must have binary classifications. '
-+'Top row must be attribute titles, and last column must be the classifications')
-parser.add_argument('-o', '--output', nargs=1, required = True, help='The .csv file to read data from. Data must have binary classifications. '
-+'Top row must be attribute titles, and last column must be the classifications')
-#parser.add_argument('-g', '--gini', required=False, action='store_true', help='If this flag is used then at the gini will be used instead of entropy')
-#parser.add_argument('-t', '--training_proportion', nargs=1, required = True, help='the proportion of the file to be used as training data')
-#parser.add_argument('--test', required = False, action='store_true', help='Test 20 different training set sizes and print thier accuracy')
-args = parser.parse_args()
+# parser = argparse.ArgumentParser()
+# #parser.add_argument('-p', '--positive', nargs=1, required = True, help='Type the symbol you that denotes a positive label in the .csv')
+# parser.add_argument('-f', '--file', nargs=1, required = True, help='The .csv file to read data from. Data must have binary classifications. '
+# +'Top row must be attribute titles, and last column must be the classifications')
+# parser.add_argument('-o', '--output', nargs=1, required = True, help='The .csv file to read data from. Data must have binary classifications. '
+# +'Top row must be attribute titles, and last column must be the classifications')
+# #parser.add_argument('-g', '--gini', required=False, action='store_true', help='If this flag is used then at the gini will be used instead of entropy')
+# #parser.add_argument('-t', '--training_proportion', nargs=1, required = True, help='the proportion of the file to be used as training data')
+# #parser.add_argument('--test', required = False, action='store_true', help='Test 20 different training set sizes and print thier accuracy')
+# args = parser.parse_args()
 
-postive_symbol = 'y'#args.positive[0]
-data_file = args.file[0]
-output_file = args.output[0]
+postive_symbol = 'Yes'#args.positive[0]
+# data_file = args.file[0]
+# output_file = args.output[0]
 gini_true = False #args.gini
 train_prop = 1 #float(args.training_proportion[0])
 run_test = False #args.test
@@ -253,16 +255,26 @@ class Attribute:
     
 
 def main():
+    print("Running Python!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+    print(sys.argv)
+    print('File', sys.argv[0], 'Id', sys.argv[1])
     # Read in file
-    with open(data_file) as csvfile:
-        data_reader = csv.reader(csvfile, delimiter=',')
+    with open(sys.argv[1]) as csv_file:
+        data_reader = csv.reader(csv_file, delimiter=',')
+        # print(list(data_reader))
+        # for row in data_reader:
+        #     print(data_reader)
         line_count = -1
         header = []
         attributes = []
         examples = []
+    
         for row in data_reader:
+            # print("test")
             if line_count == -1:
                 header = row
+                print(row)
+                # print("Here")
                 # init attributes
                 attributes = make_attributes_from_csv_header(header)
                 line_count += 1
@@ -271,7 +283,12 @@ def main():
                 attributes = update_attributes_from_csv_row(row, attributes)
                 examples.append(make_example_from_csv_row(row, attributes))
         # shuffle for randomnesss
-        random.shuffle(examples)
+        # random.shuffle(examples)
+        # print(header)
+        # print(attributes)
+        # print(examples)
+
+
         '''
         # if run test than run test ranging from 0.05 to 0.95 of the data being trained on
         if run_test:
@@ -302,16 +319,16 @@ def main():
         else:
         '''
         # if not test just run one training and testing cycles
-        training_cuttoff = int(len(examples)*(train_prop))
+        # training_cuttoff = int(len(examples)*(train_prop))
             
             
-        training_set = examples[0:training_cuttoff]
-        testing_set = examples[training_cuttoff:-1]
+        training_set = examples
+        # testing_set = examples[training_cuttoff:-1]
 
         DTL = Decision_Tree_Learner()
         #time_start = time.time()
         tree = DTL.learn(training_set, attributes, [], gini_true)
-        print(tree)
+        #print(tree)
         #total_time = time.time() - time_start
             
         '''
@@ -328,10 +345,19 @@ def main():
                     correct_count += 1
             print(str(train_prop)+"," + str(training_cuttoff) + "," + str(correct_count/len(testing_set)))
         '''
+        output_file = "wwwroot/lib/dtl_algorithm/tree_"+ str(sys.argv[2]) +".json"
         f = open(output_file, "w")
-        f.write(json.dumps([tree.to_json()]))
+        if type(tree) != int:
+            f.write(json.dumps([tree.to_json()]))
+        elif(tree == 1): 
+            f.write(json.dumps([{"name": "Yes", "is_link": False, "parent": "null", "children": []}]))
+        else:
+            f.write(json.dumps([{"name": "No", "is_link": False, "parent": "null", "children": []}]))
         f.close()
-        
+        if type(tree) != int:
+            print(json.dumps([tree.to_json()]))
+        else: 
+            print(json.dumps([{"name": "Yes", "is_link": False, "parent": "null", "children": "null"}]))
 
         # net = tree.create_networkx()
         # # write_dot(net, "test.dot")
@@ -339,36 +365,38 @@ def main():
         # args = ''
         # A.layout('dot', args=args +'-Gsplines=spline -Glabel="Should I wait for a table at a restaurant?"')
         # A.draw('test2.png')
+                
+
+
+            # print(depth)
             
+    # def json_to_csv(json_string):
+    #     json_dict = json.loads(json_string)
+    #     title = json_dict['rootQuestion']['name']
+    #     headers = [subq['subQuestion']['name'] for subq in json_dict[answeredSubQuestions]]
+    #     columns = []
+    #     count = 0
+    #     for subq in json_dict[answeredSubQuestions]:
+    #         column.append([])
+    #         for ans in subq['answers']:
+    #             column[count].append(ans)
+    #         count += 1
+        
+    #     csv = ''
+    #     for i in range(0, len(headers)):
+    #         if i == len(headers) - 1:
+    #             csv += header + '\n'
+    #         else:
+    #             csv += headers + ','
+        
+    #     for i in range(0, len(columns[-1])):
+    #         for j in range(len(columns)):
+    #             if j == len(colums-1):
+    #                 csv += columns[j][i] + '\n'
+    #             else:
+    #                 csv += columns[j][i] + ','
 
-        # print(depth)
-def json_to_csv(json_string):
-    json_dict = json.loads(json_string)
-    title = json_dict['rootQuestion']['name']
-    headers = [subq['subQuestion']['name'] for subq in json_dict[answeredSubQuestions]]
-    columns = []
-    count = 0
-    for subq in json_dict[answeredSubQuestions]:
-        column.append([])
-        for ans in subq['answers']:
-            column[count].append(ans)
-        count += 1
-    
-    csv = ''
-    for i in range(0, len(headers)):
-        if i == len(headers) - 1:
-            csv += header + '\n'
-        else:
-            csv += headers + ','
-    
-    for i in range(0, len(columns[-1])):
-        for j in range(len(columns)):
-            if j == len(colums-1):
-                csv += columns[j][i] + '\n'
-            else:
-                csv += columns[j][i] + ','
-
-    return csv
+    #     return csv
 
 def tree_to_json():
     pass
@@ -378,6 +406,7 @@ def make_attributes_from_csv_header(header):
     attributes = []
     for i in range(0, len(header)-1):
         attributes.append(Attribute(header[i], []))
+        # print(attributes[i].name)
     return attributes
 # add new found attribute values to the attributes
 def update_attributes_from_csv_row(row, attributes):

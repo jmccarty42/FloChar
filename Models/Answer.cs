@@ -13,7 +13,8 @@ namespace FloChar.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         public int QuestionId { get; set; }
-        public string Value { get; set; }
+        
+        public bool Value { get; set; }
         [MaxLength(767)]
         public string UserId { get; set; }
     }

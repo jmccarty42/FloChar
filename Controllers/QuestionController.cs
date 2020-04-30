@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using FloChar.Data;
@@ -12,6 +14,7 @@ namespace FloChar.Controllers
     [Route("/api/[controller]")]
     public class QuestionController : Controller
     {
+        public static bool locked = false;
         public ApplicationDbContext _context;
         public QuestionController(ApplicationDbContext context)
         {
@@ -63,8 +66,9 @@ namespace FloChar.Controllers
 
             _context.RootQuestions.Add(rootQuestion);
             _context.SaveChanges();
+            var csv = "";
 
-            foreach(string subQuestion in askedQuestions.SubQuestionNames)
+            foreach (string subQuestion in askedQuestions.SubQuestionNames)
             {
                 _context.SubQuestions.Add(new SubQuestion
                 {
@@ -75,44 +79,164 @@ namespace FloChar.Controllers
 
             _context.SaveChanges();
 
+            write_csv(rootQuestion.Id);
+
             return NoContent();
         }
+
+        protected virtual bool IsFileLocked(FileInfo file)
+        {
+            try
+            {
+                using (FileStream stream = file.Open(FileMode.Open, FileAccess.Read, FileShare.None))
+                {
+                    stream.Close();
+                }
+            }
+            catch (IOException)
+            {
+                //the file is unavailable because it is:
+                //still being written to
+                //or being processed by another thread
+                //or does not exist (has already been processed)
+                return true;
+            }
+
+            //file is not locked
+            return false;
+        }
+
+        private void write_csv(int rootId)
+        {
+            UserQuestionAnswerSet uqas = GetUserQuestionsById(rootId).Value;
+            string csvHeader = "";
+            List<List<string>> answers = new List<List<string>>();
+            int counter = 0;
+            foreach (AnsweredSubQuestion asq in uqas.AnsweredSubQuestions)
+            {
+                csvHeader += asq.SubQuestion.Name + ",";
+                answers.Add(new List<string>());
+                foreach (Answer ans in asq.Answers)
+                {
+                    answers[counter].Add(ans.Value ? "Yes" : "No");
+                }
+                counter++;
+            }
+            csvHeader = csvHeader.Remove(csvHeader.LastIndexOf(','));
+            List<string> answer_rows = new List<string>();
+
+            int minindex = 0;
+            int minval = answers[0].Count;
+            for(int i = 0; i <answers.Count; i++)
+            {
+                if (answers[i].Count < minval)
+                {
+                    minindex = i;
+                }
+            }
+
+            for (int i = 0; i < answers[minindex].Count; i++)
+            {
+                string line = "";
+                foreach (List<string> answerSet in answers)
+                {
+                    line += answerSet[i] + ",";
+                }
+                line = line.Remove(line.LastIndexOf(","));
+                answer_rows.Add(line);
+            }
+            
+
+            string path = @"wwwroot/lib/dtl_algorithm/data_"+rootId + ".csv";
+            // This text is added only once to the file.
+            //if (System.IO.File.Exists(path))
+            //{
+            //    using (StreamWriter sw = System.IO.File.CreateText(path))
+            //    {
+            //        sw.WriteLine(csvHeader);
+            //    }
+            //}
+
+            // Create a file to write to.
+            while(locked){
+
+            }
+            locked = true;
+            using (StreamWriter sw = System.IO.File.CreateText(path))
+            {
+                sw.WriteLine(csvHeader);
+            }
+
+            using (StreamWriter sw = System.IO.File.AppendText(path))
+            {
+                foreach (string row in answer_rows)
+                {
+                    sw.WriteLine(row);
+                }
+            }
+            locked = false;
+        }
+
 
         [HttpPost("answer/{rootid}/{id}/{value}")]
         public IActionResult PostUserAnswer(int rootid, int id, string value)
         {
-            _context.Answers.Add(new Answer{ QuestionId = id, Value = value });
+            Console.WriteLine(rootid);
+            _context.Answers.Add(new Answer{ QuestionId = id, Value = (value == "Yes"? true : false) });
 
             _context.SaveChanges();
             return NoContent();
         }
 
-        [HttpGet("api/tree/{rootId}")]
-        public IActionResult GetTreeJson(int rootId)
+        [HttpGet("tree/{rootId}")]
+        public ActionResult<string> GetTreeJson(int rootId)
+        {   
+            return Content(System.IO.File.ReadAllText(@"wwwroot/lib/dtl_algorithm/tree_"+rootId + ".json"));
+        }
+
+        public string run_cmd(string cmd, List<string> args)
         {
-            UserQuestionAnswerSet uqas = GetUserQuestionsById(rootId).Value;
-            string csvHeader = "";
-            List<List<string> > answers = new List<List<string> >();
-            int counter = 0;
-            foreach (AnsweredSubQuestion asq in uqas.AnsweredSubQuestions)
-            {
-                csvHeader += asq.SubQuestion.Name+",";
-                foreach (Answer ans in asq.Answers)
-                {
-                    answers[counter].Add(ans.)
-                }
-                counter++;
+            ProcessStartInfo start = new ProcessStartInfo();
+            start.FileName = @"C:\Users\rober\AppData\Local\Programs\Python\Python38-32\python ";
+            string argument = " \"" + cmd + "\"";
+            foreach (string arg in args){
+                argument += " \"" + arg + "\"";
             }
-            csvHeader.Remove(csvHeader.LastIndexOf(","));
+            start.Arguments = argument;
+            start.UseShellExecute = false;// Do not use OS shell
+            start.CreateNoWindow = true; // We don't need new window
+            start.RedirectStandardOutput = true;// Any output, generated by application will be redirected back
+            start.RedirectStandardError = true; // Any error in standard output will be redirected back (for example exceptions)
+            using (Process process = Process.Start(start))
+            {
+                Debug.WriteLine("running");
+                //process.WaitForExit();
+                using (StreamReader reader = process.StandardOutput)
+                {
+                    string stderr = process.StandardError.ReadToEnd(); // Here are the exceptions from our Python script
+                    string result = reader.ReadToEnd(); // Here is the result of StdOut(for example: print "test")
+                    Debug.WriteLine(stderr);
+                    Debug.WriteLine(result);
+                }
+            }
+            return "";
+        }
 
 
-            String command = @"python wwwroot/lib/dtl_algorithm/DecisionTree.py -f wwwroot/lib/dtl_algorithm/test_data.csv -o wwwroot/lib/dtl_algorithm/treeData.json";
-            ProcessStartInfo cmdsi = new ProcessStartInfo("cmd.exe");
-            cmdsi.Arguments = command;
-            Process cmd = Process.Start(cmdsi);
-            cmd.WaitForExit()
-            string output = p.StandardOutput.ReadToEnd();
-            p.WaitForExit();
+
+        [HttpPost("update/{rootId}")]
+        public IActionResult UpdateGraph(int rootId)
+        {
+            write_csv(rootId);
+            while (locked)
+            {
+
+            }
+            locked = true;
+            Debug.WriteLine("Calling python!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+            Debug.WriteLine(run_cmd("wwwroot/lib/dtl_algorithm/DecisionTree.py ", new List<string> { "wwwroot/lib/dtl_algorithm/data_" + rootId + ".csv ", rootId.ToString()}));
+            locked = false;
+            return NoContent();
         }
 
         public IActionResult DeleteUserQuestionByUQAS([FromBody] UserQuestionAnswerSet q)

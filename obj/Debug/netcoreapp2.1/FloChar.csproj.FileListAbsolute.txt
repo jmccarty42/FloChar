@@ -115,7 +115,6 @@ C:/Users/jacob/source/repos/FloChar/FloChar/obj/Debug/netcoreapp2.1/Razor/Pages/
 /Users/John/Desktop/Senior Software Project/FloChar/obj/Debug/netcoreapp2.1/FloChar.dll
 /Users/John/Desktop/Senior Software Project/FloChar/obj/Debug/netcoreapp2.1/FloChar.pdb
 /Users/John/Desktop/Senior Software Project/FloChar/obj/Debug/netcoreapp2.1/FloChar.csproj.CopyComplete
-C:\Users\rober\OneDrive\Code\Flochar\bin\Debug\netcoreapp2.1\wwwroot\lib\dtl_algorithm\treeData2.json
 C:\Users\rober\OneDrive\Code\Flochar\bin\Debug\netcoreapp2.1\appsettings.Development.json
 C:\Users\rober\OneDrive\Code\Flochar\bin\Debug\netcoreapp2.1\appsettings.json
 C:\Users\rober\OneDrive\Code\Flochar\bin\Debug\netcoreapp2.1\Properties\launchSettings.json

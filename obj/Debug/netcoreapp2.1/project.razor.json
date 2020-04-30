@@ -2917,6 +2917,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\rober\\OneDrive\\Code\\Flochar\\Pages\\AnswerQuestion.cshtml",
+      "TargetPath": "Pages\\AnswerQuestion.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\rober\\OneDrive\\Code\\Flochar\\Pages\\QuestionForum.cshtml",
       "TargetPath": "Pages\\QuestionForum.cshtml",
       "FileKind": "mvc"

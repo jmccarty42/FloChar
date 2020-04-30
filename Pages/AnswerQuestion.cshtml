@@ -4,22 +4,13 @@
     ViewData["Title"] = "AnswerQuestion";
 }
 
-<script src="~/js/questionHandler.js"></script>
-<script>
-    function jsonize_answers(id, subIds) {
-        console.log(subIds);
-        for (var sid in subIds){
-            yes_button = document.getElementsByClassName(id + "-" + sid).getElementById("Yes").value;
 
-            if (yes_button) {
-                answerQuestion(id, sid, "Yes")
-            }
-            else {
-                answerQuestion(id, sid, "No")
-            }
-        }
+<script src="~/js/questionHandler.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script>
+<script>
+    function collapse(id) {
+        window.alert("Success!");
     }
-        
 </script>
 <h1>Answer Questions</h1>
 @foreach (var rootQuestion in Model.RootQuestions)
@@ -44,8 +35,8 @@
                         <label>@subQuestion.Name</label>
                         <div>
                             <div>
-                                <label>Yes&emsp;</label><input class="@rootQuestion.Id-@subQuestion.Id" id="Yes" type="radio" name="@subQuestion.Id-radio" value="Yes" /><br />
-                                <label>No&emsp;</label><input class="@rootQuestion.Id-@subQuestion.Id" id="No" type="radio" name="@subQuestion.Id-radio" value="No" />
+                                <label>Yes&emsp;</label><input class="@rootQuestion.Id-@subQuestion.Id-yes" id="Yes" type="radio" name="@subQuestion.Id-radio" /><br />
+                                <label>No&emsp;</label><input class="@rootQuestion.Id-@subQuestion.Id" id="No" type="radio" name="@subQuestion.Id-radio" />
                             </div>
                         </div>
                     </div>
@@ -53,25 +44,30 @@
 
                     <br />
                 }
+                <script>
+                    function send_answer_@(rootQuestion.Id)_@(subQuestion.Id)()
+                    {
+                        yes_button = document.getElementsByClassName(@rootQuestion.Id + "-" + @subQuestion.Id + "-yes")[0].checked;
+                        //console.log(sid);
+                        if (yes_button) {
+                            answerQuestion(@rootQuestion.Id, @subQuestion.Id, "Yes")
+                        }
+                        else {
+                            answerQuestion(@rootQuestion.Id, @subQuestion.Id, "No")
+                        }
+                    }
+                </script>
             }
-            @{string s = "";} 
-            @foreach (int id in subIds)
-            { s += id + ","; }
-            <button class="btn btn-primary" onclick="answerQuestion(@rootQuestion.Id, [@s])">Submit</button>
-            <br />
+            <button class="btn btn-primary" onclick="@foreach (Models.SubQuestion subQuestion in Model.SubQuestions){if (subQuestion.RootId == rootQuestion.Id){<text>send_answer_</text>@(rootQuestion.Id)<text>_</text>@(subQuestion.Id)<text>(); </text>}} updateGraph(@rootQuestion.Id);">Submit</button>
+                 <br />
+                 <br />
+                 <br />
+             </div>
+     </div>
 
-            <br />
+     </div>
 
-            <br />
-
-
-
-
-        </div>
-
-</div>
-</div>
-<br />
+     <br />
 }
 
 
